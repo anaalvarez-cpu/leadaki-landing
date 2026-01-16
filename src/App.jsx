@@ -10,6 +10,9 @@ import { SocialProof } from './components/sections/SocialProof';
 import { Testimonials } from './components/sections/Testimonials';
 import { Footer } from './components/sections/Footer';
 
+// 👇 AQUÍ AGREGAMOS LA NUEVA IMPORTACIÓN
+import { Booking } from './components/sections/Booking';
+
 function App() {
     return (
         <div className="bg-[#0f172a] min-h-screen text-white font-sans selection:bg-pink-500 selection:text-white">
@@ -21,16 +24,16 @@ function App() {
                 {/* 1. Sección Principal (Vender es dar ventaja) */}
                 <Hero />
                 
-                {/* 2. Loop de Ingresos (Atraer, Empoderar, Conectar) */}
+                {/* 2. Loop de Ingresos */}
                 <RevenueLoop />
                 
-                {/* 3. ¡TU NUEVA SECCIÓN DE TARJETAS! (Reemplaza a la antigua) */}
+                {/* 3. Tarjetas expandibles */}
                 <ExpandingCards />
                 
                 {/* 4. Lista de servicios */}
                 <Services />
 
-                 {/* 5. Lista de servicios */}
+                {/* 5. Google Partner */}
                 <GooglePartner />
                 
                 {/* 6. Casos de éxito y logos */}
@@ -38,9 +41,13 @@ function App() {
                 
                 {/* 7. Testimonios */}
                 <Testimonials />
+
+                {/* 👇 8. NUEVA SECCIÓN: CALENDARIO (Justo antes del cierre) */}
+                <Booking />
+                
             </main>
 
-            {/* Pie de página con formulario */}
+            {/* Pie de página */}
             <Footer />
             
         </div>
