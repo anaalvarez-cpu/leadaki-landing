@@ -10,6 +10,7 @@ import { SocialProof } from './components/sections/SocialProof';
 import { Testimonials } from './components/sections/Testimonials';
 import { Footer } from './components/sections/Footer';
 
+
 // 👇 AQUÍ AGREGAMOS LA NUEVA IMPORTACIÓN
 import { Booking } from './components/sections/Booking';
 
