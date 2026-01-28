@@ -1,73 +1,109 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Target, Zap, Users } from 'lucide-react';
-import { AnimatedSection } from '../ui/AnimatedSection';
+// 👇 AQUÍ ESTABA EL ERROR. Ahora está limpio:
+import { Target, Zap, Users, ArrowRight } from 'lucide-react'; 
 
-const features = [
-    {
-        icon: <Target className="w-8 h-8 text-white" />,
-        title: "Atraer",
-        description: "Capturamos la atención de potenciales clientes con estrategias de alto impacto.",
-        color: "bg-pink-600"
-    },
-    {
-        icon: <Zap className="w-8 h-8 text-white" />,
-        title: "Empoderar",
-        description: "Nutrimos a los prospectos con contenido relevante y automatización inteligente.",
-        color: "bg-purple-600"
-    },
-    {
-        icon: <Users className="w-8 h-8 text-white" />,
-        title: "Conectar",
-        description: "Facilitamos la conversión final conectando leads calificados con tu equipo.",
-        color: "bg-indigo-600"
-    }
+const steps = [
+  {
+    icon: Target,
+    title: "Atraer",
+    desc: "Capturamos la atención de clientes ideales con estrategias de alto impacto y segmentación precisa.",
+    color: "text-pink-500",
+    bg: "bg-pink-500/10",
+    border: "group-hover:border-pink-500/50"
+  },
+  {
+    icon: Zap,
+    title: "Empoderar",
+    desc: "Nutrimos a los prospectos con contenido relevante y automatización inteligente para prepararlos para la venta.",
+    color: "text-purple-500",
+    bg: "bg-purple-500/10",
+    border: "group-hover:border-purple-500/50"
+  },
+  {
+    icon: Users,
+    title: "Conectar",
+    desc: "Facilitamos la conversión final conectando leads calificados directamente con tu equipo comercial.",
+    color: "text-blue-500",
+    bg: "bg-blue-500/10",
+    border: "group-hover:border-blue-500/50"
+  }
 ];
 
 export function RevenueLoop() {
-    return (
-        <section className="py-20 bg-[#0f172a] relative overflow-hidden">
-            <div className="container mx-auto px-4 md:px-6">
-                <AnimatedSection>
-                    <div className="mb-16 max-w-2xl">
-                        <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                            IA Revenue Loop
-                        </h2>
-                        <h3 className="text-2xl md:text-3xl text-gray-300 mb-6">
-                            Equipos de Marketing <br />y Ventas de alto rendimiento
-                        </h3>
-                        <p className="text-gray-400">
-                            Alineamos sus objetivos generando estrategias y planes de acción que aceleran la conversión de manera predecible y escalable.
-                        </p>
-                    </div>
-                </AnimatedSection>
+  return (
+    <section className="py-24 bg-[#0f172a] relative overflow-hidden">
+      
+      {/* Fondo decorativo sutil */}
+      <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent hidden md:block" />
+      
+      <div className="container mx-auto px-4 relative z-10">
+        
+        {/* Encabezado */}
+        <div className="mb-16 md:text-center max-w-3xl mx-auto">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-5xl font-bold text-white mb-6"
+          >
+            IA Revenue Loop
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-xl text-gray-400"
+          >
+            Alineamos tus equipos de Marketing y Ventas con un sistema cíclico que acelera la conversión.
+          </motion.p>
+        </div>
 
-                <div className="grid md:grid-cols-3 gap-8">
-                    {features.map((feature, index) => (
-                        <AnimatedSection key={index} delay={index * 0.2}>
-                            <motion.div
-                                whileHover={{ y: -10 }}
-                                className="group relative h-full bg-[#1e1b4b]/50 border border-white/10 rounded-2xl p-8 overflow-hidden hover:border-white/20 transition-colors"
-                            >
-                                {/* Header Color Accent */}
-                                <div className={`absolute top-0 left-0 w-full h-1 ${feature.color}`} />
-
-                                <div className={`w-14 h-14 rounded-xl ${feature.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-                                    {feature.icon}
-                                </div>
-
-                                <h4 className="text-2xl font-bold mb-4">{feature.title}</h4>
-                                <p className="text-gray-400 leading-relaxed">
-                                    {feature.description}
-                                </p>
-
-                                {/* Decorative background glow */}
-                                <div className={`absolute -bottom-10 -right-10 w-32 h-32 ${feature.color} blur-[60px] opacity-20 group-hover:opacity-40 transition-opacity`} />
-                            </motion.div>
-                        </AnimatedSection>
-                    ))}
+        {/* Grid de Pasos */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+          
+          {steps.map((step, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.2 }}
+              className="relative group"
+            >
+              {/* Tarjeta Glassmorphism */}
+              <div className={`h-full p-8 rounded-2xl bg-[#1e293b]/60 backdrop-blur-sm border border-white/5 transition-all duration-300 ${step.border} hover:bg-[#1e293b] hover:-translate-y-1`}>
+                
+                {/* Icono con brillo */}
+                <div className={`w-14 h-14 rounded-xl ${step.bg} ${step.color} flex items-center justify-center mb-6 shadow-lg shadow-black/20 group-hover:scale-110 transition-transform duration-300`}>
+                  <step.icon size={28} />
                 </div>
-            </div>
-        </section>
-    );
+
+                {/* Título y Texto */}
+                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-white transition-colors">
+                  {step.title}
+                </h3>
+                <p className="text-gray-400 leading-relaxed text-sm">
+                  {step.desc}
+                </p>
+
+                {/* Flecha decorativa (solo visual) */}
+                <div className="mt-6 flex items-center gap-2 text-xs font-bold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white/50">
+                  <span className={step.color}>Fase {index + 1}</span>
+                </div>
+              </div>
+
+              {/* Flecha conectora entre tarjetas (Solo desktop, y no en la última) */}
+              {index !== steps.length - 1 && (
+                <div className="hidden md:block absolute top-1/2 -right-6 transform -translate-y-1/2 z-20 text-white/20">
+                  <ArrowRight size={32} />
+                </div>
+              )}
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }

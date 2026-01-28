@@ -1,41 +1,35 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-// Componentes Fijos (Siempre visibles)
+// Componentes
 import { Navbar } from './components/sections/Navbar';
 import { Footer } from './components/sections/Footer';
 
-// Páginas (El contenido que cambia)
+// Páginas
 import { Home } from './pages/Home';
+import { WhyLeadaki } from './pages/WhyLeadaki';
 
-// Aquí importaremos las nuevas páginas luego (ej: import { About } from './pages/About';)
+// ... imports ...
 
 function App() {
   return (
-    <Router>
-      <div className="bg-[#0f172a] min-h-screen text-white font-sans selection:bg-pink-500 selection:text-white flex flex-col">
+    <BrowserRouter>
+      {/* 👇 AQUÍ AGREGAMOS LA MAGIA DE NUEVO: selection:bg-pink-500 */}
+      <div className="bg-[#0f172a] min-h-screen text-white font-sans flex flex-col selection:bg-pink-500 selection:text-white">
         
-        {/* 1. NAVBAR FIJO ARRIBA */}
         <Navbar />
 
-        {/* 2. CONTENIDO CAMBIANTE (RUTAS) */}
         <main className="flex-grow">
           <Routes>
-            {/* Cuando la ruta es "/" (el inicio), muestra el componente Home */}
             <Route path="/" element={<Home />} />
-            
-            {/* Aquí agregaremos las otras rutas pronto:
-            <Route path="/nosotros" element={<About />} /> 
-            <Route path="/servicios" element={<ServicesPage />} /> 
-            */}
+            <Route path="/por-que-leadaki" element={<WhyLeadaki />} />
           </Routes>
         </main>
 
-        {/* 3. FOOTER FIJO ABAJO */}
         <Footer />
         
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 

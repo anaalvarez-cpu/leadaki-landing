@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+// 👇 1. IMPORTAMOS "Link" PARA QUE LA NAVEGACIÓN SEA INSTANTÁNEA
+import { Link } from 'react-router-dom'; 
 import { 
   Menu, X, ChevronDown, 
   Target, Zap, BarChart3, Users, Layout, 
@@ -7,13 +9,23 @@ import {
 } from 'lucide-react';
 import logoImg from '../../assets/logo-blanco-01.svg'; 
 
-// --- DATOS DEL MEGA MENU ---
+// --- DATOS DEL MEGA MENU (Con los enlaces configurados) ---
 const menuData = [
   {
     title: "Por qué Leadaki",
     items: [
-      { name: "Propósito y Visión", desc: "Nuestra misión de transformar agencias.", icon: Target },
-      { name: "Por qué Growth", desc: "La metodología detrás del crecimiento.", icon: Zap }
+      { 
+        name: "Propósito y Visión", 
+        desc: "Nuestra misión de transformar agencias.", 
+        icon: Target,
+        href: "/por-que-leadaki" // 👈 ¡ESTE ES EL ENLACE QUE CREAMOS!
+      },
+      { 
+        name: "Por qué Growth", 
+        desc: "La metodología detrás del crecimiento.", 
+        icon: Zap,
+        href: "#" // Los demás quedan en espera
+      }
     ],
     featured: {
       title: "Auditoría Gratuita",
@@ -24,9 +36,9 @@ const menuData = [
   {
     title: "Cómo trabajamos",
     items: [
-      { name: "Método Revenue Loop", desc: "Sistema cíclico de generación de ingresos.", icon: BarChart3 },
-      { name: "Diagnóstico Digital", desc: "Evaluación profunda de tus activos.", icon: LineChart },
-      { name: "Modelo de Partnership", desc: "Crecemos contigo, no solo para ti.", icon: Users }
+      { name: "Método Revenue Loop", desc: "Sistema cíclico de generación de ingresos.", icon: BarChart3, href: "#" },
+      { name: "Diagnóstico Digital", desc: "Evaluación profunda de tus activos.", icon: LineChart, href: "#" },
+      { name: "Modelo de Partnership", desc: "Crecemos contigo, no solo para ti.", icon: Users, href: "#" }
     ],
     featured: {
       title: "El Método",
@@ -37,10 +49,10 @@ const menuData = [
   {
     title: "Soluciones",
     items: [
-      { name: "Paid Media", desc: "Meta & Google Ads de alto rendimiento.", icon: Megaphone },
-      { name: "Creatividad", desc: "Diseño que convierte clics en clientes.", icon: Layout },
-      { name: "Data Analytics", desc: "Dashboards y atribución precisa.", icon: LineChart },
-      { name: "UX/UI & CRO", desc: "Optimización de tasa de conversión.", icon: Globe }
+      { name: "Paid Media", desc: "Meta & Google Ads de alto rendimiento.", icon: Megaphone, href: "#" },
+      { name: "Creatividad", desc: "Diseño que convierte clics en clientes.", icon: Layout, href: "#" },
+      { name: "Data Analytics", desc: "Dashboards y atribución precisa.", icon: LineChart, href: "#" },
+      { name: "UX/UI & CRO", desc: "Optimización de tasa de conversión.", icon: Globe, href: "#" }
     ],
     featured: {
       title: "Casos Recientes",
@@ -51,8 +63,8 @@ const menuData = [
   {
     title: "Resultados",
     items: [
-      { name: "Casos de éxito", desc: "Resultados reales, números reales.", icon: Award },
-      { name: "Clientes y Verticales", desc: "Sectores donde somos expertos.", icon: Users }
+      { name: "Casos de éxito", desc: "Resultados reales, números reales.", icon: Award, href: "#" },
+      { name: "Clientes y Verticales", desc: "Sectores donde somos expertos.", icon: Users, href: "#" }
     ],
     featured: {
       title: "Resultados",
@@ -63,9 +75,9 @@ const menuData = [
   {
     title: "Nosotros",
     items: [
-      { name: "Manifiesto Leadaki", desc: "Nuestros valores no negociables.", icon: Target },
-      { name: "Equipo y Partners", desc: "Conoce a los expertos detrás.", icon: Users },
-      { name: "Reconocimientos", desc: "Premios y certificaciones.", icon: Award }
+      { name: "Manifiesto Leadaki", desc: "Nuestros valores no negociables.", icon: Target, href: "#" },
+      { name: "Equipo y Partners", desc: "Conoce a los expertos detrás.", icon: Users, href: "#" },
+      { name: "Reconocimientos", desc: "Premios y certificaciones.", icon: Award, href: "#" }
     ],
     featured: {
       title: "Únete al equipo",
@@ -80,25 +92,23 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeMobileSubmenu, setActiveMobileSubmenu] = useState(null);
 
-  // Controladores para evitar parpadeos
   const handleMouseLeave = () => setActiveMenu(null);
 
   return (
     <>
-      {/* --- CONTENEDOR PRINCIPAL FIJO --- */}
-      {/* El onMouseLeave está aquí para cubrir tanto la navbar como el desplegable */}
+      {/* --- NAVBAR --- */}
       <nav 
         className="fixed top-6 left-0 right-0 z-50 flex flex-col items-center px-4"
         onMouseLeave={handleMouseLeave} 
       >
         
-        {/* 1. LA BARRA DE NAVEGACIÓN (PASTILLA) */}
+        {/* BARRA PRINCIPAL */}
         <div className="bg-[#0f172a]/90 backdrop-blur-xl border border-white/10 rounded-2xl px-6 py-4 shadow-[0_8px_32px_rgba(0,0,0,0.4)] flex items-center justify-between w-full max-w-7xl relative z-50">
           
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-2 shrink-0 mr-8">
+          {/* Logo (Ahora también es un Link al inicio) */}
+          <Link to="/" className="flex items-center gap-2 shrink-0 mr-8">
             <img src={logoImg} alt="Leadaki Logo" className="h-9 w-auto object-contain" />
-          </a>
+          </Link>
 
           {/* Enlaces Desktop */}
           <div className="hidden lg:flex items-center gap-1 justify-center flex-1">
@@ -132,8 +142,7 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* 2. EL MEGA MENU DESPLEGABLE (ANCHO COMPLETO) */}
-        {/* Está fuera de la 'pastilla' pero dentro del 'nav' para compartir el ancho */}
+        {/* MEGA MENU DESPLEGABLE (ANCHO COMPLETO) */}
         <AnimatePresence>
           {activeMenu !== null && (
             <motion.div
@@ -141,19 +150,20 @@ export function Navbar() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.98 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="w-full max-w-7xl mt-2 z-40" // mt-2 separa un poco el menú de la barra
+              className="w-full max-w-7xl mt-2 z-40"
             >
               <div 
                 className="bg-[#0f172a] border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row min-h-[350px]"
-                onMouseEnter={() => {/* Mantiene abierto */}}
               >
                 
-                {/* COLUMNA IZQUIERDA: LISTA DE ITEMS (Expandida) */}
+                {/* COLUMNA IZQUIERDA: LISTA DE ITEMS */}
                 <div className="flex-1 p-8 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 content-start">
                   {menuData[activeMenu].items.map((item, idx) => (
-                    <a 
+                    // 👇 AQUÍ USAMOS <Link> EN LUGAR DE <a>
+                    <Link 
                       key={idx} 
-                      href="#" 
+                      to={item.href || "#"} // Si no tiene link, usa #
+                      onClick={() => setActiveMenu(null)} // Cierra el menú al hacer click
                       className="group flex items-start gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors"
                     >
                       <div className="p-3 bg-white/5 rounded-xl text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-all shadow-inner shrink-0">
@@ -167,13 +177,12 @@ export function Navbar() {
                           {item.desc}
                         </p>
                       </div>
-                    </a>
+                    </Link>
                   ))}
                 </div>
 
-                {/* COLUMNA DERECHA: CTA VISUAL (35% del ancho) */}
+                {/* COLUMNA DERECHA: CTA VISUAL */}
                 <div className={`w-full md:w-[35%] p-10 hidden md:flex flex-col justify-end relative overflow-hidden bg-gradient-to-br ${menuData[activeMenu].featured.bg}`}>
-                   {/* Patrón de fondo sutil */}
                    <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-overlay"></div>
                   
                   <div className="relative z-10">
@@ -196,10 +205,9 @@ export function Navbar() {
             </motion.div>
           )}
         </AnimatePresence>
-
       </nav>
 
-      {/* --- MENU MOVIL (Sin cambios) --- */}
+      {/* --- MENU MOVIL --- */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -208,7 +216,6 @@ export function Navbar() {
             exit={{ opacity: 0, y: -20 }}
             className="fixed inset-0 z-50 bg-[#0f172a] pt-32 px-6 pb-10 overflow-y-auto lg:hidden"
           >
-            {/* Botón cerrar móvil explícito */}
             <button 
               className="absolute top-8 right-6 text-white p-2 bg-white/10 rounded-full"
               onClick={() => setMobileMenuOpen(false)}
@@ -236,13 +243,19 @@ export function Navbar() {
                       >
                         <div className="flex flex-col gap-4 py-4 pl-2">
                           {category.items.map((item, subIndex) => (
-                            <a key={subIndex} href="#" className="flex items-center gap-4 p-2 rounded-lg active:bg-white/10">
+                            // 👇 ENLACE MÓVIL TAMBIÉN ACTUALIZADO
+                            <Link 
+                              key={subIndex} 
+                              to={item.href || "#"} 
+                              onClick={() => setMobileMenuOpen(false)} // Cierra todo al hacer click
+                              className="flex items-center gap-4 p-2 rounded-lg active:bg-white/10"
+                            >
                               <item.icon size={22} className="text-blue-500" />
                               <div>
                                 <span className="text-lg text-gray-200 block">{item.name}</span>
                                 <span className="text-sm text-gray-500 block">{item.desc}</span>
                               </div>
-                            </a>
+                            </Link>
                           ))}
                         </div>
                       </motion.div>
