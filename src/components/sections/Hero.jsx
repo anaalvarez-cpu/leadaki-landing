@@ -36,17 +36,8 @@ export function Hero() {
                         transition={{ duration: 0.6 }}
                         className="flex items-center gap-3 mb-8"
                     >
-                        <div className="flex -space-x-2">
-                            {[1,2,3,4].map(i => (
-                                <div key={i} className="w-8 h-8 rounded-full border border-black bg-gray-800 flex items-center justify-center overflow-hidden">
-                                     <img src={`https://i.pravatar.cc/100?img=${i+10}`} alt="" className="w-full h-full object-cover" />
-                                </div>
-                            ))}
-                        </div>
-                        <div className="flex flex-col">
-                            <div className="flex text-yellow-400 text-xs">★★★★★</div>
-                            <span className="text-gray-400 text-xs font-medium tracking-wide">TRUSTED BY 500+ BRANDS</span>
-                        </div>
+
+
                     </motion.div>
 
                     <div className="overflow-hidden">
@@ -78,13 +69,9 @@ export function Hero() {
                         transition={{ delay: 0.5 }}
                         className="flex flex-col sm:flex-row gap-4"
                     >
-                        <button className="px-8 py-5 bg-[#2563EB] hover:bg-[#1d4ed8] text-white font-bold text-sm tracking-widest uppercase transition-all flex items-center justify-center gap-3 group">
+                        <button className="px-8 py-5 bg-[#DB2777] hover:bg-[#9333EA] text-white font-bold text-sm tracking-widest uppercase transition-all flex items-center justify-center gap-3 group rounded-xl">
                             Book a Call
                             <span className="group-hover:translate-x-1 transition-transform">↗</span>
-                        </button>
-                        <button className="px-8 py-5 bg-white hover:bg-gray-100 text-black font-bold text-sm tracking-widest uppercase transition-all flex items-center justify-center gap-3">
-                            Explore Work
-                            <ArrowRight className="w-4 h-4" />
                         </button>
                     </motion.div>
                 </div>
