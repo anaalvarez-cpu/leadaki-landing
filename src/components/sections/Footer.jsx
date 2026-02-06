@@ -12,7 +12,7 @@ export function Footer() {
           {/* Call to Action Wrapper */}
           <div>
             <AnimatedSection>
-              <h2 className="text-5xl font-bold mb-6">
+              <h2 className="text-5xl font-bold mb-6 ">
                 Si querés vender más, no alcanza con hacer más marketing.
               </h2>
               <p className="text-gray-400 text-lg mb-8 max-w-md">
@@ -21,7 +21,7 @@ export function Footer() {
 
               <div className="flex gap-4">
                 <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
-                  <p className="font-bold text-sm">Hablemos</p>
+                  <p className="font-bold text-sm text-[#EE4587]">Hablemos</p>
                 </div>
               </div>
             </AnimatedSection>

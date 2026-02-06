@@ -18,7 +18,7 @@ export function GooglePartner() {
           <div>
    
             
-            <h2 className="text-4xl md:text-5xl font-bold text-[#0f172a] mb-6 leading-tight">
+            <h2 className="text-4xl md:text-3xl font-bold text-[#0f172a] mb-6 leading-tight">
               Nuestros Partners
             </h2>
 

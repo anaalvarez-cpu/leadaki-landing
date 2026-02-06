@@ -27,7 +27,7 @@ export function Problem() {
         <div className="max-w-4xl mr-auto mb-16 text-left">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             El crecimiento no siempre falla por falta de inversión. <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-rose-500">
+            <span className="text-[#EE4587]">
               Falla por desorden.
             </span>
           </h2>

@@ -15,7 +15,8 @@ const cards = [
       "Procesos comerciales y CRM",
       "UX/UI y fricción en el journey"
     ],
-    color: "bg-blue-900",
+    // 👇 CAMBIO: Usamos azul vibrante (#2563EB) en vez de oscuro
+    color: "bg-[#2563EB]", 
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
   },
   {
@@ -30,7 +31,8 @@ const cards = [
       "Incrementan las bajas tempranas",
       "Perjudican la recompra"
     ],
-    color: "bg-purple-900",
+    // 👇 CAMBIO: Usamos violeta Leadaki (#9333EA)
+    color: "bg-[#9333EA]",
     image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=2076&auto=format&fit=crop"
   },
   {
@@ -44,7 +46,8 @@ const cards = [
       "Gestión de Ventas no silada",
       "Data y Gestión de Ventas trabajando de forma integrada, no en silos"
     ],
-    color: "bg-[#be185d]", // Pink Leadaki
+    // 👇 CAMBIO: Usamos el magenta fuerte (#DB2777)
+    color: "bg-[#DB2777]", 
     image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
   },
   {
@@ -52,8 +55,8 @@ const cards = [
     title: "4. Optimizamos",
     shortTitle: "Optimización",
     description: "Medimos constantemente el impacto de la ejecución en tus ventas y te brindamos feedback continuo.",
-
-    color: "bg-emerald-900",
+    // 👇 CAMBIO: Usamos un esmeralda más vivo (#059669)
+    color: "bg-[#059669]",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop"
   }
 ];
@@ -62,7 +65,7 @@ export function ExpandingCards() {
   const [activeId, setActiveId] = useState(0);
 
   return (
-    <section className="py-24 bg-[#0f172a] px-4 md:px-6">
+    <section className="py-24 bg-[#0f172a] px-4 md:px-6 overflow-hidden">
       <div className="container mx-auto">
         
         {/* Header con el Copy de Solución */}
@@ -84,14 +87,14 @@ export function ExpandingCards() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-xl text-gray-400 max-w-3xl border-l-4 border-white/10 pl-6"
+            className="text-xl text-gray-400 max-w-3xl border-l-4 border-blue-500/30 pl-6"
           >
             Diseñamos y operamos un sistema de crecimiento que conecta paid media, creatividad, data y ventas en ciclos cortos de aprendizaje. Medimos impacto real en revenue.
           </motion.p>
         </div>
 
         {/* CONTENEDOR PRINCIPAL */}
-        <div className="flex flex-col md:flex-row h-[650px] gap-3 w-full">
+        <div className="flex flex-col md:flex-row h-[650px] gap-4 w-full">
           {cards.map((card) => (
             <CardItem 
               key={card.id} 
@@ -112,7 +115,7 @@ function CardItem({ card, isOpen, onClick }) {
     <motion.div
       layout
       onClick={onClick}
-      className={`relative rounded-3xl overflow-hidden cursor-pointer transition-all duration-700 ease-[0.32,0.72,0,1] group
+      className={`relative rounded-3xl overflow-hidden cursor-pointer transition-all duration-700 ease-[0.32,0.72,0,1] group border border-white/5
         ${isOpen ? 'md:flex-[3] flex-[3]' : 'md:flex-[0.5] flex-[1]'} 
         ${!isOpen && 'hover:md:flex-[0.6] hover:brightness-110'} 
       `}
@@ -127,9 +130,12 @@ function CardItem({ card, isOpen, onClick }) {
         `}
       />
       
-      {/* Capas de Color */}
-      <div className={`absolute inset-0 opacity-90 ${card.color} mix-blend-multiply transition-opacity duration-500 ${isOpen ? 'opacity-90' : 'opacity-95'}`} />
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90" />
+      {/* Capas de Color (Mejoradas) */}
+      {/* Usamos opacity-80 para que el color sea intenso pero deje ver la foto */}
+      <div className={`absolute inset-0 ${card.color} mix-blend-multiply transition-opacity duration-500 ${isOpen ? 'opacity-80' : 'opacity-90'}`} />
+      
+      {/* Gradiente Negro (Para legibilidad del texto) */}
+      <div className={`absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/40 to-transparent transition-opacity duration-500 ${isOpen ? 'opacity-90' : 'opacity-60'}`} />
 
       {/* --- CONTENIDO TARJETA ABIERTA --- */}
       <AnimatePresence>
@@ -146,7 +152,7 @@ function CardItem({ card, isOpen, onClick }) {
                transition={{ delay: 0.2, duration: 0.5 }}
              >
                 {/* Icono decorativo esquina */}
-                <div className="absolute top-8 right-8 bg-white/10 p-2 rounded-full backdrop-blur-sm border border-white/10">
+                <div className="absolute top-8 right-8 bg-white/10 p-3 rounded-full backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors">
                   <ArrowUpRight className="w-6 h-6 text-white" />
                 </div>
 
@@ -154,26 +160,22 @@ function CardItem({ card, isOpen, onClick }) {
                   {card.title}
                 </h3>
                 
-                <p className="text-lg text-gray-200 mb-6 font-medium leading-relaxed border-l-2 border-white/30 pl-4">
+                <p className="text-lg text-gray-200 mb-8 font-medium leading-relaxed border-l-2 border-white/30 pl-4 max-w-2xl">
                   {card.description}
                 </p>
                 
-                {/* Renderizamos los bullets si existen */}
+                {/* Bullets */}
                 {card.details && (
-                  <div className="grid grid-cols-1 gap-2 mb-8 bg-black/20 p-4 rounded-xl backdrop-blur-md border border-white/5">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4 bg-black/20 p-5 rounded-2xl backdrop-blur-md border border-white/5">
                     {card.details.map((detail, index) => (
                       <div key={index} className="flex items-start gap-3">
-                        <CheckCircle2 className="w-4 h-4 text-green-400 mt-1 shrink-0" />
-                        <span className="text-sm text-gray-300">{detail}</span>
+                        {/* El icono hereda el color de la tarjeta para conectar visualmente */}
+                        <CheckCircle2 className={`w-5 h-5 mt-0.5 shrink-0 text-white opacity-80`} />
+                        <span className="text-sm text-gray-100 font-medium leading-snug">{detail}</span>
                       </div>
                     ))}
                   </div>
                 )}
-
-                {/* Botón CTA opcional si quieres */}
-                {/* <button className="text-sm font-bold text-white hover:text-blue-300 flex items-center gap-2 transition-colors">
-                  Saber más <ArrowRight size={16} />
-                </button> */}
              </motion.div>
           </motion.div>
         )}
@@ -202,7 +204,7 @@ function CardItem({ card, isOpen, onClick }) {
                 </h3>
              </div>
             
-            <div className="p-3 rounded-full border border-white/20 group-hover:bg-white group-hover:text-black group-hover:-translate-y-2 transition-all duration-300">
+            <div className="p-3 rounded-full border border-white/20 group-hover:bg-white group-hover:text-black group-hover:-translate-y-2 transition-all duration-300 shadow-lg">
               <ArrowRight className="w-5 h-5" />
             </div>
           </motion.div>
