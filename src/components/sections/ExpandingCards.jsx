@@ -15,8 +15,8 @@ const cards = [
       "Procesos comerciales y CRM",
       "UX/UI y fricción en el journey"
     ],
-    // 👇 CAMBIO: Usamos azul vibrante (#2563EB) en vez de oscuro
-    color: "bg-[#2563EB]", 
+    footer: "Investigamos todo lo que impacta en ventas, no solo tu estrategia de medios.",
+    color: "bg-[#2563EB]", // Azul Vibrante
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
   },
   {
@@ -31,32 +31,29 @@ const cards = [
       "Incrementan las bajas tempranas",
       "Perjudican la recompra"
     ],
-    // 👇 CAMBIO: Usamos violeta Leadaki (#9333EA)
-    color: "bg-[#9333EA]",
+    footer: "Investigamos todo lo que impacta en ventas, no solo tu estrategia de medios.",
+    color: "bg-[#9333EA]", // Violeta Leadaki
     image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=2076&auto=format&fit=crop"
   },
   {
     id: 2,
     title: "3. Ejecutamos",
     shortTitle: "Ejecución",
-    description: "Activamos de forma sincronizada los accionables priorizados y te acompañamos a implementar los puntos de a nivel interno.",
+    description: "Activamos de forma sincronizada los accionables priorizados y te acompañamos a implementar los puntos de mejora.",
     details: [
       "Paid Media y Creatividad integrados",
       "Optimización UX/UI",
-      "Gestión de Ventas no silada",
-      "Data y Gestión de Ventas trabajando de forma integrada, no en silos"
+      "Data y Gestión de Ventas integradas"
     ],
-    // 👇 CAMBIO: Usamos el magenta fuerte (#DB2777)
-    color: "bg-[#DB2777]", 
+    color: "bg-[#DB2777]", // Magenta Leadaki
     image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
   },
   {
     id: 3,
     title: "4. Optimizamos",
     shortTitle: "Optimización",
-    description: "Medimos constantemente el impacto de la ejecución en tus ventas y te brindamos feedback continuo.",
-    // 👇 CAMBIO: Usamos un esmeralda más vivo (#059669)
-    color: "bg-[#059669]",
+    description: "Medimos constantemente el impacto de la ejecución en tus ventas y te brindamos feedback. Hacemos un corte y volvemos a auditar.",
+    color: "bg-[#059669]", // Esmeralda Vibrante
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop"
   }
 ];
@@ -68,9 +65,8 @@ export function ExpandingCards() {
     <section className="py-24 bg-[#0f172a] px-4 md:px-6 overflow-hidden">
       <div className="container mx-auto">
         
-        {/* Header con el Copy de Solución */}
+        {/* Header */}
         <div className="mb-16 max-w-4xl">
-
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -78,7 +74,7 @@ export function ExpandingCards() {
             className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight"
           >
             Growth Revenue System ™ <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-pink-500 text-3xl md:text-5xl">
+            <span className="text-[#EE4587] text-3xl md:text-5xl">
               by Leadaki
             </span>
           </motion.h2>
@@ -94,7 +90,8 @@ export function ExpandingCards() {
         </div>
 
         {/* CONTENEDOR PRINCIPAL */}
-        <div className="flex flex-col md:flex-row h-[650px] gap-4 w-full">
+        {/* Ajusté la altura a 750px para asegurar que entre todo en pantallas chicas */}
+        <div className="flex flex-col md:flex-row h-[550px] gap-4 w-full">
           {cards.map((card) => (
             <CardItem 
               key={card.id} 
@@ -130,12 +127,9 @@ function CardItem({ card, isOpen, onClick }) {
         `}
       />
       
-      {/* Capas de Color (Mejoradas) */}
-      {/* Usamos opacity-80 para que el color sea intenso pero deje ver la foto */}
-      <div className={`absolute inset-0 ${card.color} mix-blend-multiply transition-opacity duration-500 ${isOpen ? 'opacity-80' : 'opacity-90'}`} />
-      
-      {/* Gradiente Negro (Para legibilidad del texto) */}
-      <div className={`absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/40 to-transparent transition-opacity duration-500 ${isOpen ? 'opacity-90' : 'opacity-60'}`} />
+      {/* Capas de Color */}
+      <div className={`absolute inset-0 ${card.color} mix-blend-multiply transition-opacity duration-500 ${isOpen ? 'opacity-85' : 'opacity-90'}`} />
+      <div className={`absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/50 to-transparent transition-opacity duration-500 ${isOpen ? 'opacity-90' : 'opacity-60'}`} />
 
       {/* --- CONTENIDO TARJETA ABIERTA --- */}
       <AnimatePresence>
@@ -144,44 +138,54 @@ function CardItem({ card, isOpen, onClick }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { duration: 0.1 } }}
-            className="absolute inset-0 p-8 md:p-10 flex flex-col justify-end"
+            className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end"
           >
              <motion.div
                initial={{ y: 20, opacity: 0 }}
                animate={{ y: 0, opacity: 1 }}
                transition={{ delay: 0.2, duration: 0.5 }}
              >
-                {/* Icono decorativo esquina */}
-                <div className="absolute top-8 right-8 bg-white/10 p-3 rounded-full backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors">
+                {/* Icono decorativo */}
+                <div className="absolute top-6 right-6 md:top-8 md:right-8 bg-white/10 p-3 rounded-full backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors">
                   <ArrowUpRight className="w-6 h-6 text-white" />
                 </div>
 
-                <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
+                <h3 className="text-2xl md:text-4xl font-bold text-white mb-3 leading-tight">
                   {card.title}
                 </h3>
                 
-                <p className="text-lg text-gray-200 mb-8 font-medium leading-relaxed border-l-2 border-white/30 pl-4 max-w-2xl">
+                <p className="text-base md:text-lg text-gray-200 mb-6 font-medium leading-relaxed border-l-2 border-white/30 pl-4 max-w-2xl">
                   {card.description}
                 </p>
                 
-                {/* Bullets */}
+                {/* Bullets en 2 Columnas para ahorrar espacio */}
                 {card.details && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4 bg-black/20 p-5 rounded-2xl backdrop-blur-md border border-white/5">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2 mb-4 bg-black/20 p-4 rounded-2xl backdrop-blur-md border border-white/5">
                     {card.details.map((detail, index) => (
-                      <div key={index} className="flex items-start gap-3">
-                        {/* El icono hereda el color de la tarjeta para conectar visualmente */}
-                        <CheckCircle2 className={`w-5 h-5 mt-0.5 shrink-0 text-white opacity-80`} />
-                        <span className="text-sm text-gray-100 font-medium leading-snug">{detail}</span>
+                      <div key={index} className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 mt-0.5 shrink-0 text-white/90" />
+                        <span className="text-sm text-gray-100 leading-snug">{detail}</span>
                       </div>
                     ))}
                   </div>
                 )}
+
+                {/* FOOTER (Conclusión) */}
+                {card.footer && (
+                  <div className="mt-2 bg-white/10 border border-white/20 p-3 rounded-lg backdrop-blur-sm">
+                    <p className="text-white font-bold italic text-sm md:text-base flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-[#EE4587] animate-pulse shrink-0"/>
+                      {card.footer}
+                    </p>
+                  </div>
+                )}
+
              </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* --- CONTENIDO TARJETA CERRADA (Vertical) --- */}
+      {/* --- CONTENIDO TARJETA CERRADA --- */}
       <AnimatePresence>
         {!isOpen && (
           <motion.div 

@@ -14,7 +14,6 @@ export function Home() {
       <Hero />
       <Problem />
       <ExpandingCards />
-      <RevenueLoop />
       <Services />
       <SocialProof />
       <GooglePartner />
