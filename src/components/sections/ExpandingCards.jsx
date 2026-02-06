@@ -31,7 +31,7 @@ const cards = [
       "Incrementan las bajas tempranas",
       "Perjudican la recompra"
     ],
-    footer: "Investigamos todo lo que impacta en ventas, no solo tu estrategia de medios.",
+    footer: "Definimos qué cambiar primero y por qué.",
     color: "bg-[#9333EA]", // Violeta Leadaki
     image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=2076&auto=format&fit=crop"
   },
@@ -41,9 +41,10 @@ const cards = [
     shortTitle: "Ejecución",
     description: "Activamos de forma sincronizada los accionables priorizados y te acompañamos a implementar los puntos de mejora.",
     details: [
-      "Paid Media y Creatividad integrados",
-      "Optimización UX/UI",
-      "Data y Gestión de Ventas integradas"
+      "Paid Media",
+      "Creatividad", 
+      "UX/UI", 
+      "Data y Gestión de Ventas trabajando de forma integrada, no en silos.",
     ],
     color: "bg-[#DB2777]", // Magenta Leadaki
     image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
