@@ -1,105 +1,114 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-// 👇 AQUÍ ESTABA EL ERROR. Ahora está limpio:
-import { Target, Zap, Users, ArrowRight } from 'lucide-react'; 
+import { Search, Stethoscope, Zap, TrendingUp, CheckCircle2 } from 'lucide-react';
 
 const steps = [
   {
-    icon: Target,
-    title: "Atraer",
-    desc: "Capturamos la atención de clientes ideales con estrategias de alto impacto y segmentación precisa.",
-    color: "text-pink-500",
-    bg: "bg-pink-500/10",
-    border: "group-hover:border-pink-500/50"
+    icon: Search,
+    title: "1. Auditamos",
+    desc: "Analizamos todos los aspectos que impactan en tu estrategia de ventas realizando una auditoría completa del funnel.",
+    details: ["Paid Media & estrategia", "Propuesta de valor", "Tracking y calidad de datos", "Procesos comerciales / CRM", "UX/UI y fricción en el journey"],
+    color: "text-[#EE4587]",
+    bg: "bg-[#EE4587]/10",
+  },
+  {
+    icon: Stethoscope,
+    title: "2. Diagnosticamos",
+    desc: "Hacemos un diagnóstico de la salud de tus ventas y priorizamos ajustes por impacto/esfuerzo.",
+    details: ["Aumentan tu CPA", "Frenan conversión a ventas", "Deterioran tu ROI", "Bajas tempranas", "Perjudican la recompra"],
+    subtext:'Definimos qué cambiar primero y por qué.',
+    color: "text-purple-400",
+    bg: "bg-purple-400/10",
   },
   {
     icon: Zap,
-    title: "Empoderar",
-    desc: "Nutrimos a los prospectos con contenido relevante y automatización inteligente para prepararlos para la venta.",
-    color: "text-purple-500",
-    bg: "bg-purple-500/10",
-    border: "group-hover:border-purple-500/50"
+    title: "3. Ejecutamos",
+    desc: "Activamos de forma sincronizada los accionables priorizados y te acompañamos a implementar os puntos de mejora a nivel interno.",
+    subtext: "Paid Media, Creatividad, UX/UI, Data y Gestión de Ventas trabajando integrados, no en silos.",
+    color: "text-[#EE4587]", 
+    bg: "bg-[#EE4587]/10",
   },
   {
-    icon: Users,
-    title: "Conectar",
-    desc: "Facilitamos la conversión final conectando leads calificados directamente con tu equipo comercial.",
-    color: "text-blue-500",
-    bg: "bg-blue-500/10",
-    border: "group-hover:border-blue-500/50"
+    icon: TrendingUp,
+    title: "4. Optimizamos (siempre)",
+    desc: "Medimos impacto en revenue, brindamos feedback, hacemos corte y volvemos a auditar.",
+    color: "text-emerald-400",
+    bg: "bg-emerald-400/10",
   }
 ];
 
 export function RevenueLoop() {
   return (
-    <section className="py-24 bg-[#0f172a] relative overflow-hidden">
-      
-      {/* Fondo decorativo sutil */}
-      <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent hidden md:block" />
+    // 👇 CAMBIO 1: Fondo #0b1120 (Igual que Servicios) para que no haya corte de color
+    <section className="py-24 bg-[#0b1120] relative overflow-hidden">
       
       <div className="container mx-auto px-4 relative z-10">
         
         {/* Encabezado */}
-        <div className="mb-16 md:text-center max-w-3xl mx-auto">
+        <div className="mb-16 text-left max-w-4xl mr-auto">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-white mb-6"
+            className="text-4xl md:text-6xl font-bold text-white mb-6"
           >
-            IA Revenue Loop
+            Growth Revenue System ™ 
+            <span className="text-[#EE4587] block mt-2">by Leadaki</span>
           </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-xl text-gray-400"
-          >
-            Alineamos tus equipos de Marketing y Ventas con un sistema cíclico que acelera la conversión.
-          </motion.p>
+          <p className="text-xl md:text-2xl text-gray-400 max-w-3xl leading-relaxed">
+            Diseñamos y operamos un sistema de crecimiento que conecta paid media, creatividad, data y ventas en ciclos cortos de aprendizaje. Medimos impacto real en revenue, reasignamos inversión de acuerdo a su rendimiento, y optimizamos el negocio mientras sigue creciendo.
+
+          </p>
         </div>
 
-        {/* Grid de Pasos */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-          
+        {/* Grid de Tarjetas */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {steps.map((step, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
-              className="relative group"
+              transition={{ delay: index * 0.1 }}
+              className="relative group h-full"
             >
-              {/* Tarjeta Glassmorphism */}
-              <div className={`h-full p-8 rounded-2xl bg-[#1e293b]/60 backdrop-blur-sm border border-white/5 transition-all duration-300 ${step.border} hover:bg-[#1e293b] hover:-translate-y-1`}>
+              {/* 👇 CAMBIO 2: Quité el 'border' para eliminar cualquier línea fina */}
+              <div className={`h-full p-8 rounded-3xl bg-white/5 backdrop-blur-sm transition-all duration-300 hover:bg-white/10 hover:-translate-y-2 flex flex-col items-start text-left shadow-xl`}>
                 
-                {/* Icono con brillo */}
-                <div className={`w-14 h-14 rounded-xl ${step.bg} ${step.color} flex items-center justify-center mb-6 shadow-lg shadow-black/20 group-hover:scale-110 transition-transform duration-300`}>
+                {/* Icono */}
+                <div className={`w-14 h-14 rounded-2xl ${step.bg} ${step.color} flex items-center justify-center mb-6 shrink-0`}>
                   <step.icon size={28} />
                 </div>
 
-                {/* Título y Texto */}
-                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-white transition-colors">
-                  {step.title}
-                </h3>
-                <p className="text-gray-400 leading-relaxed text-sm">
+                {/* Título */}
+                <h3 className="text-2xl font-bold text-white mb-3">{step.title}</h3>
+                
+                {/* Descripción */}
+                <p className="text-gray-300 text-base mb-6 leading-relaxed">
                   {step.desc}
                 </p>
+                
+                {/* Detalles */}
+                {step.details && (
+                  <ul className="space-y-3 mt-auto w-full">
+                    {step.details.map((detail, i) => (
+                      <li key={i} className="flex items-start gap-3 text-sm text-gray-400">
+                        <CheckCircle2 size={16} className={`shrink-0 mt-0.5 ${step.color}`} />
+                        <span className="leading-snug">{detail}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
 
-                {/* Flecha decorativa (solo visual) */}
-                <div className="mt-6 flex items-center gap-2 text-xs font-bold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white/50">
-                  <span className={step.color}>Fase {index + 1}</span>
-                </div>
+                {/* Subtexto sin líneas */}
+                {step.subtext && (
+                   <div className="mt-auto pt-4 w-full">
+                     <p className="text-sm text-gray-500 leading-snug italic">
+                       {step.subtext}
+                     </p>
+                   </div>
+                )}
               </div>
-
-              {/* Flecha conectora entre tarjetas (Solo desktop, y no en la última) */}
-              {index !== steps.length - 1 && (
-                <div className="hidden md:block absolute top-1/2 -right-6 transform -translate-y-1/2 z-20 text-white/20">
-                  <ArrowRight size={32} />
-                </div>
-              )}
             </motion.div>
           ))}
         </div>

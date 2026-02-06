@@ -1,141 +1,112 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { BarChart3, Tag, MonitorPlay, Layers, PieChart, Circle } from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ArrowRight, Star, MessageSquare } from 'lucide-react';
 
 export function GooglePartner() {
-  const containerRef = useRef(null);
-  
-  // Detectamos el scroll
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "center center"]
-  });
-
-  // --- CONFIGURACIÓN DE MOVIMIENTO (MÁS ESPACIO) ---
-  // Hemos aumentado drásticamente los valores (de 180 a 280 y de 90 a 140).
-  // Esto asegura que las tarjetas se separen completamente y no se toquen.
-  
-  // Tarjetas Exteriores (Van muy lejos)
-  const xLeftOuter = useTransform(scrollYProgress, [0, 1], [0, -280]);
-  const xRightOuter = useTransform(scrollYProgress, [0, 1], [0, 280]);
-  
-  // Tarjetas Interiores (Van lejos)
-  const xLeftInner = useTransform(scrollYProgress, [0, 1], [0, -140]);
-  const xRightInner = useTransform(scrollYProgress, [0, 1], [0, 140]);
-
   return (
-    <section ref={containerRef} className="py-24 bg-white overflow-hidden">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="py-24 bg-white overflow-hidden relative">
+      
+      {/* Fondo decorativo sutil */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-gray-50 to-transparent pointer-events-none" />
+
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         
-        <div className="grid lg:grid-cols-12 gap-8 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           
-          {/* === COLUMNA IZQUIERDA (Texto) === */}
-          <div className="lg:col-span-5 z-20 relative">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="flex items-center gap-2 mb-6"
-            >
-              <Circle className="w-3 h-3 text-[#ea4335] fill-current" />
-              <h3 className="text-sm font-bold text-gray-500 uppercase tracking-widest">
-                Google Marketing Platform
-              </h3>
-            </motion.div>
+          {/* === COLUMNA IZQUIERDA: TEXTO === */}
+          <div>
             
-            <h2 className="text-4xl md:text-5xl font-bold text-[#0f172a] mb-6 leading-tight">
-              Datos que impulsan <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-                resultados reales
-              </span>
+            <h2 className="text-3xl font-bold text-[#0f172a] mb-2">
+              Nuestros Partners
             </h2>
 
-            <p className="text-lg text-gray-600 leading-relaxed mb-8">
-              Conectamos todo tu ecosistema digital. Como partners certificados, integramos la suite completa para que tengas una visión unificada.
+            <p className="text-xl text-gray-600 leading-relaxed mb-10 border-l-4 border-blue-500/30 pl-6">
+              Los socios que potencian nuestra propuesta.
             </p>
 
-            <div className="flex gap-3">
-                <div className="px-4 py-2 bg-white border border-gray-200 rounded-lg shadow-sm flex items-center gap-2">
-                    <div className="w-4 h-4 rounded-full border-[3px] border-blue-500 border-t-red-500 border-r-yellow-500 border-l-green-500"></div>
-                    <div>
-                      <span className="text-[10px] font-bold text-gray-400 block leading-none mb-0.5">GOOGLE PARTNER</span>
-                      <span className="text-xs font-bold text-blue-600 leading-none">PREMIER 2024</span>
-                    </div>
+            <div className="flex flex-col gap-6">
+              <div className="flex items-start gap-4 group">
+                <div className="p-2 bg-blue-50 rounded-full group-hover:bg-blue-100 transition-colors mt-1">
+                   <ArrowRight className="w-5 h-5 text-blue-600" />
                 </div>
+                <p className="text-gray-800 font-medium text-lg leading-snug">
+                  GMP Sales Partner + 15 años Google Premier Partner
+                </p>
+              </div>
+
+              <div className="flex items-start gap-4 group">
+                <div className="p-2 bg-purple-50 rounded-full group-hover:bg-purple-100 transition-colors mt-1">
+                   <ArrowRight className="w-5 h-5 text-[#7F44F8]" />
+                </div>
+                <p className="text-gray-800 font-medium text-lg leading-snug">
+                  Creadores de Cliengo. CRM de WhatsApp con IA líder en LATAM.
+                </p>
+              </div>
             </div>
           </div>
 
-          {/* === COLUMNA DERECHA (Cartas con Espacio) === */}
-          {/* h-[320px] es suficiente para contenerlas */}
-          <div className="lg:col-span-7 h-[320px] flex items-center justify-center relative perspective-1000">
-             
-             {/* 1. IZQUIERDA EXTERIOR */}
-             <motion.div style={{ x: xLeftOuter, zIndex: 10 }} className="absolute">
-                <Card 
-                  icon={<Layers className="w-5 h-5 text-green-600" />} 
-                  name="Campaign Manager" 
-                  color="bg-green-50"
-                />
-             </motion.div>
+          {/* === COLUMNA DERECHA: TARJETAS ALINEADAS === */}
+          {/* 'items-center' asegura que si hubiera diferencia de altura se centren, pero con h-80 son iguales */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-end items-center">
+            
+            {/* 1. CARD GOOGLE */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="group relative bg-white border border-gray-100 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all w-full sm:w-64 h-80 flex flex-col"
+            >
+               <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-500 via-red-500 to-yellow-500 rounded-t-3xl"></div>
+               
+               <div className="mb-6 bg-white p-3 rounded-xl shadow-sm border border-gray-100 w-fit">
+                 <img 
+                   src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" 
+                   alt="Google" 
+                   className="h-6 w-auto"
+                 />
+               </div>
 
-             {/* 2. IZQUIERDA INTERIOR */}
-             <motion.div style={{ x: xLeftInner, zIndex: 20 }} className="absolute">
-                <Card 
-                  icon={<Tag className="w-5 h-5 text-blue-500" />} 
-                  name="Tag Manager" 
-                  color="bg-blue-50"
-                />
-             </motion.div>
+               <h3 className="text-2xl font-bold text-gray-900 mb-1">Premier Partner</h3>
+               <p className="text-xs text-gray-400 font-bold tracking-wider mb-4 uppercase">+15 AÑOS</p>
+               
+               <div className="flex items-center gap-1 text-yellow-400 mt-auto pt-4 border-t border-gray-50">
+                 <Star size={16} fill="currentColor" />
+                 <Star size={16} fill="currentColor" />
+                 <Star size={16} fill="currentColor" />
+                 <Star size={16} fill="currentColor" />
+                 <Star size={16} fill="currentColor" />
+               </div>
+            </motion.div>
 
-             {/* 3. DERECHA INTERIOR */}
-             <motion.div style={{ x: xRightInner, zIndex: 20 }} className="absolute">
-                <Card 
-                  icon={<MonitorPlay className="w-5 h-5 text-green-500" />} 
-                  name="Display & Video 360" 
-                  color="bg-green-50"
-                />
-             </motion.div>
+            {/* 2. CARD CLIENGO (Sin margen superior extra) */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              // 👇 AQUÍ QUITAMOS 'sm:mt-12'. Ahora están alineadas.
+              className="group relative bg-white border border-gray-100 rounded-3xl p-8 shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all w-full sm:w-64 h-80 flex flex-col"
+            >
+               <div className="absolute top-0 left-0 w-full h-1.5 bg-[#7F44F8] rounded-t-3xl"></div>
 
-             {/* 4. DERECHA EXTERIOR */}
-             <motion.div style={{ x: xRightOuter, zIndex: 10 }} className="absolute">
-                <Card 
-                  icon={<PieChart className="w-5 h-5 text-blue-600" />} 
-                  name="Looker Studio" 
-                  color="bg-blue-50"
-                />
-             </motion.div>
+               <div className="mb-6 bg-white p-3 rounded-xl shadow-sm border border-gray-100 w-fit">
+                  <span className="font-bold text-xl tracking-tight text-[#7F44F8]">cliengo</span>
+               </div>
 
-             {/* 5. CENTRAL (Analytics) */}
-             <motion.div className="relative z-30 shadow-2xl rounded-2xl">
-                <div className="w-32 h-32 bg-white rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.12)] border border-gray-100 flex flex-col items-center justify-center gap-2">
-                   <div className="w-10 h-10 rounded-xl bg-[#fef7e0] flex items-center justify-center scale-105">
-                     <BarChart3 className="w-6 h-6 text-[#fbbc05]" />
-                   </div>
-                   <span className="text-xs font-bold text-gray-800">Analytics 4</span>
-                   <div className="px-2 py-0.5 bg-yellow-100 text-[8px] font-bold text-yellow-700 rounded-full uppercase tracking-wider">
-                     Hub Central
-                   </div>
-                </div>
-             </motion.div>
+               <h3 className="text-2xl font-bold text-gray-900 mb-1">CRM IA</h3>
+               <p className="text-xs text-[#7F44F8] font-bold tracking-wider mb-4 uppercase">TECH PARTNER</p>
+               
+               <div className="flex items-center gap-2 text-gray-500 text-sm mt-auto pt-4 border-t border-gray-50 font-medium">
+                 <MessageSquare size={16} className="text-[#7F44F8]" />
+                 WhatsApp Leader
+               </div>
+            </motion.div>
 
           </div>
 
         </div>
       </div>
     </section>
-  );
-}
-
-// Sub-componente (Igual que antes, tamaño mini)
-function Card({ icon, name, color }) {
-  return (
-    <div className="w-28 h-28 bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-100 flex flex-col items-center justify-center gap-2 transition-colors hover:bg-white">
-       <div className={`w-9 h-9 rounded-xl ${color} flex items-center justify-center`}>
-         {icon}
-       </div>
-       <span className="text-[10px] font-bold text-gray-500 text-center px-1 leading-tight max-w-[95%]">
-         {name}
-       </span>
-    </div>
   );
 }

@@ -1,20 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring, useAnimationFrame, useTransform } from 'framer-motion';
-import { 
-    ArrowUpRight, 
-    Car,                // Volkswagen
-    Banknote,           // Western Union
-    Dumbbell,           // SportsWorld
-    CreditCard,         // Naranja
-    Landmark,           // Solventis
-    Pipette,            // Evacopa (Industrial)
-    Building2,          // Trump Tower
-    ShieldCheck,        // 123Seguro
-    Umbrella,           // Zurich
-    Briefcase,          // Adecco
-    Gem                 // Icono genérico
-} from 'lucide-react';
-import { AnimatedSection } from '../ui/AnimatedSection';
+import { ArrowUpRight } from 'lucide-react';
 
 // --- DATOS DE LOS CASOS DE ÉXITO ---
 const cases = [
@@ -53,24 +39,17 @@ const cases = [
   }
 ];
 
-// --- LOGOS DE CLIENTES (Representados con ÍCONOS) ---
-// Fila 1
-const row1 = [
-    { name: "Volkswagen", icon: <Car className="w-8 h-8" /> },
-    { name: "Western Union", icon: <Banknote className="w-8 h-8" /> },
-    { name: "SportsWorld", icon: <Dumbbell className="w-8 h-8" /> },
-    { name: "Naranja", icon: <CreditCard className="w-8 h-8" /> },
-    { name: "Solventis", icon: <Landmark className="w-8 h-8" /> }
+// --- LOGOS REALES Y A COLOR ---
+const logos = [
+    { name: "Under Armour", url: "https://upload.wikimedia.org/wikipedia/commons/4/44/Under_armour_logo.svg" },
+    { name: "Swarovski", url: "https://i.pinimg.com/736x/71/ca/44/71ca44316e0b479d2cb5ad18b74278b3.jpg" },
+    { name: "Rehau", url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/REHAU_Logo_sRGB_01.svg/1280px-REHAU_Logo_sRGB_01.svg.png" },
+    { name: "Cooperación Seguros", url: "https://www.cooperacionseguros.com.ar/wp-content/uploads/2025/10/logo-nuevo-coop.png" },
+    { name: "Supercanal", url: "" }
 ];
 
-// Fila 2
-const row2 = [
-    { name: "Evacopa", icon: <Pipette className="w-8 h-8" /> },
-    { name: "Trump Tower", icon: <Building2 className="w-8 h-8" /> },
-    { name: "123Seguro", icon: <ShieldCheck className="w-8 h-8" /> },
-    { name: "Zurich", icon: <Umbrella className="w-8 h-8" /> },
-    { name: "Adecco", icon: <Briefcase className="w-8 h-8" /> }
-];
+// Duplicamos la lista para asegurar que el carrusel se vea denso
+const allLogos = [...logos, ...logos];
 
 const wrap = (min, max, v) => {
   const rangeSize = max - min;
@@ -82,65 +61,97 @@ export function SocialProof() {
     <section className="py-24 bg-white text-[#0f172a] overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
         
-        {/* Encabezado */}
-        <AnimatedSection className="mb-12 flex items-center gap-2">
-            <h2 className="text-4xl md:text-5xl font-bold">
-                Casos de <span className="text-[#581c87]">éxito</span>
-            </h2>
-        </AnimatedSection>
-
-        {/* GRID DE CASOS */}
-        <div className="grid md:grid-cols-3 gap-6 h-[500px] mb-32">
-            {cases.map((item) => (
-                <CaseCard key={item.id} data={item} />
-            ))}
+        {/* 1. INTRODUCCIÓN */}
+        <div className="text-left max-w-4xl mr-auto mb-20">
+            <motion.h2 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-4xl md:text-6xl font-bold mb-6 text-[#0f172a]"
+            >
+                La experiencia que respalda <br />
+                <span className="text-[#EE4587]">lo que prometemos.</span>
+            </motion.h2>
+            <motion.p 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="text-xl text-gray-500 max-w-2xl"
+            >
+                No hablamos de crecimiento desde la teoría. Lo construimos todos los días, con datos, procesos y resultados.
+            </motion.p>
         </div>
 
-        {/* --- SECCIÓN DE CLIENTES (MARQUEE DE ÍCONOS) --- */}
-        <AnimatedSection>
-            <div className="mb-12 text-center md:text-left">
-                <h3 className="text-3xl font-bold text-gray-900 mb-2">
-                    Nuestros <span className="text-pink-500">clientes</span>
+        {/* 2. CASOS DE ÉXITO */}
+        <div className="mb-32">
+            <div className="mb-10 text-left">
+                <h3 className="text-3xl font-bold text-[#0f172a] mb-2">Casos de éxito</h3>
+                <p className="text-gray-500 text-lg">Los resultados que validan nuestro trabajo.</p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6 h-[500px]">
+                {cases.map((item) => (
+                    <CaseCard key={item.id} data={item} />
+                ))}
+            </div>
+        </div>
+
+        {/* 3. NUESTROS CLIENTES (DOBLE MARQUEE) */}
+        <div className="mb-20">
+            <div className="mb-12 text-left">
+                <h3 className="text-3xl font-bold text-[#0f172a] mb-2">
+                    Nuestros clientes
                 </h3>
+                <p className="text-gray-500 text-lg">Las empresas de LATAM que ya confían en nosotros.</p>
             </div>
             
-            <div className="relative flex flex-col gap-8 w-full max-w-[100vw] -mx-4 md:mx-0">
-                {/* Degradados laterales (Fade effect) */}
-                <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-                <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+            {/* Contenedor de las dos filas con espacio entre ellas (gap-10) */}
+            <div className="relative flex flex-col gap-10 w-full max-w-[100vw] -mx-4 md:mx-0">
+                {/* Degradados laterales para el efecto fade */}
+                <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+                <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
-                {/* FILA 1: Hacia Izquierda (Velocidad controlada) */}
-                <ClientMarquee items={row1} baseVelocity={-0.5} />
+                {/* FILA 1: Mueve hacia la DERECHA (Velocidad positiva) */}
+                <ClientMarquee items={allLogos} baseVelocity={1.2} />
                 
-                {/* FILA 2: Hacia Derecha (Velocidad controlada) */}
-                <ClientMarquee items={row2} baseVelocity={0.5} />
+                {/* FILA 2: Mueve hacia la IZQUIERDA (Velocidad negativa) */}
+                <ClientMarquee items={allLogos} baseVelocity={-1.2} />
             </div>
-        </AnimatedSection>
+        </div>
 
       </div>
     </section>
   );
 }
 
-// --- COMPONENTE CARRUSEL ---
+// --- COMPONENTES AUXILIARES ---
+
 function ClientMarquee({ items, baseVelocity = 100 }) {
     const baseX = useMotionValue(0);
     const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`);
     const directionFactor = useRef(1);
     
     useAnimationFrame((t, delta) => {
+      // La dirección depende del signo de baseVelocity
       let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
-      // Sin multiplicador loco, velocidad natural 1:1
       baseX.set(baseX.get() + moveBy);
     });
   
     return (
-      <div className="overflow-hidden flex">
-        <motion.div className="flex gap-4 md:gap-8" style={{ x }}>
-          {[...Array(10)].map((_, i) => (
-             <div key={i} className="flex gap-4 md:gap-8">
+      <div className="overflow-hidden flex py-4">
+        <motion.div className="flex gap-16 md:gap-24" style={{ x }}>
+          {/* Repetimos 4 veces para un loop infinito fluido */}
+          {[...Array(4)].map((_, i) => (
+             <div key={i} className="flex gap-16 md:gap-24 items-center shrink-0">
                 {items.map((client, index) => (
-                   <LogoItem key={index} client={client} />
+                   <img 
+                     key={index} 
+                     src={client.url} 
+                     alt={client.name} 
+                     className="h-12 md:h-16 w-auto object-contain hover:scale-110 transition-transform duration-300"
+                     onError={(e) => {e.target.style.display='none';}}
+                   />
                 ))}
              </div>
           ))}
@@ -149,31 +160,12 @@ function ClientMarquee({ items, baseVelocity = 100 }) {
     );
 }
 
-// --- ITEM LOGO (CAJA CON ÍCONO) ---
-function LogoItem({ client }) {
-    return (
-        <div className="
-            flex items-center justify-center 
-            w-32 h-24 md:w-40 md:h-28
-            bg-gray-50/80 border border-gray-100 rounded-2xl
-            text-gray-400
-            hover:text-pink-600 hover:border-pink-200 hover:bg-white hover:shadow-lg hover:-translate-y-1
-            transition-all duration-300 cursor-default group
-        ">
-            {/* El Ícono escala un poco al hacer hover */}
-            <div className="transform group-hover:scale-110 transition-transform duration-300">
-                {client.icon}
-            </div>
-        </div>
-    );
-}
-
-// --- (SIN CAMBIOS) COMPONENTES DE CASOS Y CONTADOR ---
+// (CaseCard y NumberTicker permanecen igual)
 function CaseCard({ data }) {
     const [isHovered, setIsHovered] = useState(false);
     return (
         <motion.div 
-            className="relative rounded-[2rem] overflow-hidden cursor-pointer group h-full shadow-lg border border-gray-100"
+            className="relative rounded-[2rem] overflow-hidden cursor-pointer group h-full shadow-lg border border-gray-200"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
@@ -192,15 +184,18 @@ function CaseCard({ data }) {
                             {data.stats.map((stat, i) => (
                                 <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }}>
                                     <div className="flex items-baseline font-bold text-white leading-none">
-                                        <NumberTicker value={stat.value} /><span className="text-4xl text-[#ec4899] ml-1">{stat.suffix}</span>
+                                        <NumberTicker value={stat.value} /><span className="text-4xl text-[#EE4587] ml-1">{stat.suffix}</span>
                                     </div>
                                     <p className="text-xs text-gray-400 mt-1 uppercase tracking-wider font-bold">{stat.label}</p>
                                 </motion.div>
                             ))}
                         </div>
                         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
-                            <p className="text-gray-300 text-base leading-relaxed mb-6 font-medium border-l-2 border-pink-500 pl-4">{data.description}</p>
-                            <button className="flex items-center gap-2 px-5 py-2 rounded-full border border-white/30 text-white text-sm hover:bg-white hover:text-black transition-all group/btn">Ver caso completo<ArrowUpRight className="w-4 h-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" /></button>
+                            <p className="text-gray-300 text-base leading-relaxed mb-6 font-medium border-l-2 border-[#EE4587] pl-4">{data.description}</p>
+                            <button className="flex items-center gap-2 px-5 py-2 rounded-full border border-white/30 text-white text-sm hover:bg-white hover:text-[#EE4587] transition-all group/btn">
+                                Ver caso completo
+                                <ArrowUpRight className="w-4 h-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                            </button>
                         </motion.div>
                     </>
                 )}

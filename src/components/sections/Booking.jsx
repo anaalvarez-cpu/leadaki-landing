@@ -7,7 +7,7 @@ export function Booking() {
 
       {/* --- FONDO DE LUCES MEJORADO --- */}
       {/* Un solo foco de luz central grande y muy suave detrás del calendario */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] md:w-[800px] h-[600px] md:h-[800px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none -z-10" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] md:w-[800px] h-[600px] md:h-[800px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none -z-10" id="booking" />
 
       <div className="container mx-auto px-4 relative z-10">
 
