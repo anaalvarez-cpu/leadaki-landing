@@ -4,7 +4,8 @@ import { ArrowRight, Star, MessageSquare } from 'lucide-react';
 
 export function GooglePartner() {
   return (
-    <section className="py-24 bg-white overflow-hidden relative">
+    // 👇 CAMBIO CLAVE: 'pt-8' (muy poquito espacio arriba) para pegarlo a los logos
+    <section className="pt-8 pb-24 bg-white overflow-hidden relative">
       
       {/* Fondo decorativo sutil */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-gray-50 to-transparent pointer-events-none" />
@@ -13,10 +14,11 @@ export function GooglePartner() {
         
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           
-          {/* === COLUMNA IZQUIERDA: TEXTO === */}
+          {/* === COLUMNA IZQUIERDA === */}
           <div>
+   
             
-            <h2 className="text-3xl font-bold text-[#0f172a] mb-2">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#0f172a] mb-6 leading-tight">
               Nuestros Partners
             </h2>
 
@@ -45,8 +47,7 @@ export function GooglePartner() {
             </div>
           </div>
 
-          {/* === COLUMNA DERECHA: TARJETAS ALINEADAS === */}
-          {/* 'items-center' asegura que si hubiera diferencia de altura se centren, pero con h-80 son iguales */}
+          {/* === COLUMNA DERECHA (TARJETAS IGUALES) === */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-end items-center">
             
             {/* 1. CARD GOOGLE */}
@@ -79,13 +80,12 @@ export function GooglePartner() {
                </div>
             </motion.div>
 
-            {/* 2. CARD CLIENGO (Sin margen superior extra) */}
+            {/* 2. CARD CLIENGO */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              // 👇 AQUÍ QUITAMOS 'sm:mt-12'. Ahora están alineadas.
               className="group relative bg-white border border-gray-100 rounded-3xl p-8 shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all w-full sm:w-64 h-80 flex flex-col"
             >
                <div className="absolute top-0 left-0 w-full h-1.5 bg-[#7F44F8] rounded-t-3xl"></div>

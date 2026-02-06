@@ -1,34 +1,60 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, ArrowRight } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 const cards = [
   {
     id: 0,
-    title: "No decimos IA, aplicamos IA",
-    description: "Para atraer prospectos de calidad, convertirlos rápidamente en clientes y elevar su experiencia de compra.",
-    shortTitle: "Estrategia con IA", // Texto corto para la barra
-    color: "bg-[#be185d]", 
-    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop", 
-    theme: "pink"
+    title: "1. Auditamos",
+    shortTitle: "Auditoría",
+    description: "Analizamos todos los aspectos que impactan en tu estrategia de ventas realizando una auditoría completa del funnel.",
+    details: [
+      "Paid Media & estrategia de inversión",
+      "Propuesta de valor y creatividad",
+      "Tracking, eventos y calidad de datos",
+      "Procesos comerciales y CRM",
+      "UX/UI y fricción en el journey"
+    ],
+    color: "bg-blue-900",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
   },
   {
     id: 1,
-    title: "Somos Google Marketing Platform Sales Partner",
-    description: "Trabajamos con la mejor plataforma publicitaria para impactar a la persona correcta en el momento ideal.",
-    shortTitle: "Partner Google GMP", // Texto corto para la barra
-    color: "bg-[#1e1b4b]", 
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop", 
-    theme: "blue"
+    title: "2. Diagnosticamos",
+    shortTitle: "Diagnóstico",
+    description: "Hacemos un diagnóstico de la salud de tus ventas y priorizamos los ajustes de acuerdo a su nivel de impacto y esfuerzo.",
+    details: [
+      "Aumentan tu CPA",
+      "Frenan tu conversión a ventas",
+      "Deterioran tu ROI",
+      "Incrementan las bajas tempranas",
+      "Perjudican la recompra"
+    ],
+    color: "bg-purple-900",
+    image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=2076&auto=format&fit=crop"
   },
   {
     id: 2,
-    title: "Creamos el primer Chatbot para Ventas",
-    description: "Cliengo mejora tu conversión a venta y brinda una experiencia superadora a los clientes.",
-    shortTitle: "Chatbot de Ventas", // Texto corto para la barra
-    color: "bg-[#581c87]", 
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop", 
-    theme: "purple"
+    title: "3. Ejecutamos",
+    shortTitle: "Ejecución",
+    description: "Activamos de forma sincronizada los accionables priorizados y te acompañamos a implementar los puntos de a nivel interno.",
+    details: [
+      "Paid Media y Creatividad integrados",
+      "Optimización UX/UI",
+      "Gestión de Ventas no silada",
+      "Data y Gestión de Ventas trabajando de forma integrada, no en silos"
+    ],
+    color: "bg-[#be185d]", // Pink Leadaki
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
+  },
+  {
+    id: 3,
+    title: "4. Optimizamos",
+    shortTitle: "Optimización",
+    description: "Medimos constantemente el impacto de la ejecución en tus ventas y te brindamos feedback continuo.",
+
+    color: "bg-emerald-900",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop"
   }
 ];
 
@@ -36,32 +62,36 @@ export function ExpandingCards() {
   const [activeId, setActiveId] = useState(0);
 
   return (
-    <section className="py-20 bg-[#0f172a] px-4 md:px-6">
+    <section className="py-24 bg-[#0f172a] px-4 md:px-6">
       <div className="container mx-auto">
         
-        {/* Header de la sección */}
-        <div className="mb-12">
-          <motion.div 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="flex items-start gap-2 mb-2"
-          >
-             <ArrowUpRight className="text-white w-6 h-6 rotate-45" />
-             <p className="text-base font-semibold text-white">Te ayudamos a reinventar tu Estrategia</p>
-          </motion.div>
-          
+        {/* Header con el Copy de Solución */}
+        <div className="mb-16 max-w-4xl">
+
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold text-[#ec4899]"
+            className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight"
           >
-            y a liderar la era de las ventas con IA
+            Growth Revenue System ™ <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-pink-500 text-3xl md:text-5xl">
+              by Leadaki
+            </span>
           </motion.h2>
+
+          <motion.p 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-xl text-gray-400 max-w-3xl border-l-4 border-white/10 pl-6"
+          >
+            Diseñamos y operamos un sistema de crecimiento que conecta paid media, creatividad, data y ventas en ciclos cortos de aprendizaje. Medimos impacto real en revenue.
+          </motion.p>
         </div>
 
         {/* CONTENEDOR PRINCIPAL */}
-        <div className="flex flex-col md:flex-row h-[600px] gap-2 md:gap-3 w-full">
+        <div className="flex flex-col md:flex-row h-[650px] gap-3 w-full">
           {cards.map((card) => (
             <CardItem 
               key={card.id} 
@@ -82,12 +112,9 @@ function CardItem({ card, isOpen, onClick }) {
     <motion.div
       layout
       onClick={onClick}
-      // CAMBIOS CLAVE AQUÍ: 
-      // 1. md:flex-[4] para la abierta (muy grande)
-      // 2. md:flex-[0.4] para la cerrada (muy fina)
       className={`relative rounded-3xl overflow-hidden cursor-pointer transition-all duration-700 ease-[0.32,0.72,0,1] group
-        ${isOpen ? 'md:flex-[4] flex-[3]' : 'md:flex-[0.4] flex-[1]'} 
-        ${!isOpen && 'hover:md:flex-[0.5] hover:brightness-110'} 
+        ${isOpen ? 'md:flex-[3] flex-[3]' : 'md:flex-[0.5] flex-[1]'} 
+        ${!isOpen && 'hover:md:flex-[0.6] hover:brightness-110'} 
       `}
     >
       
@@ -101,8 +128,8 @@ function CardItem({ card, isOpen, onClick }) {
       />
       
       {/* Capas de Color */}
-      <div className={`absolute inset-0 opacity-90 ${card.color} mix-blend-multiply transition-opacity duration-500 ${isOpen ? 'opacity-80' : 'opacity-95'}`} />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+      <div className={`absolute inset-0 opacity-90 ${card.color} mix-blend-multiply transition-opacity duration-500 ${isOpen ? 'opacity-90' : 'opacity-95'}`} />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90" />
 
       {/* --- CONTENIDO TARJETA ABIERTA --- */}
       <AnimatePresence>
@@ -111,26 +138,42 @@ function CardItem({ card, isOpen, onClick }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { duration: 0.1 } }}
-            className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end"
+            className="absolute inset-0 p-8 md:p-10 flex flex-col justify-end"
           >
              <motion.div
                initial={{ y: 20, opacity: 0 }}
                animate={{ y: 0, opacity: 1 }}
                transition={{ delay: 0.2, duration: 0.5 }}
              >
-                <div className="absolute top-8 right-8">
-                  <ArrowUpRight className="w-10 h-10 text-white/50" />
+                {/* Icono decorativo esquina */}
+                <div className="absolute top-8 right-8 bg-white/10 p-2 rounded-full backdrop-blur-sm border border-white/10">
+                  <ArrowUpRight className="w-6 h-6 text-white" />
                 </div>
 
-                <h3 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight max-w-2xl">
+                <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
                   {card.title}
                 </h3>
-                <p className="text-lg text-gray-200 mb-8 max-w-lg font-medium">
+                
+                <p className="text-lg text-gray-200 mb-6 font-medium leading-relaxed border-l-2 border-white/30 pl-4">
                   {card.description}
                 </p>
-                <button className="px-8 py-3 rounded-full border border-white/50 text-white hover:bg-white hover:text-black transition-all font-semibold">
-                  Conocer más
-                </button>
+                
+                {/* Renderizamos los bullets si existen */}
+                {card.details && (
+                  <div className="grid grid-cols-1 gap-2 mb-8 bg-black/20 p-4 rounded-xl backdrop-blur-md border border-white/5">
+                    {card.details.map((detail, index) => (
+                      <div key={index} className="flex items-start gap-3">
+                        <CheckCircle2 className="w-4 h-4 text-green-400 mt-1 shrink-0" />
+                        <span className="text-sm text-gray-300">{detail}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Botón CTA opcional si quieres */}
+                {/* <button className="text-sm font-bold text-white hover:text-blue-300 flex items-center gap-2 transition-colors">
+                  Saber más <ArrowRight size={16} />
+                </button> */}
              </motion.div>
           </motion.div>
         )}
@@ -146,25 +189,21 @@ function CardItem({ card, isOpen, onClick }) {
             transition={{ delay: 0.1 }}
             className="absolute inset-0 flex flex-col items-center justify-between py-10"
           >
-             {/* Número o Icono arriba */}
-             <div className="text-white/40 font-bold text-xl">
+             <div className="text-white/40 font-bold text-xl font-mono">
                0{card.id + 1}
              </div>
 
-             {/* Título Vertical */}
-             {/* Usamos writing-mode para texto vertical real y elegante */}
              <div className="flex-1 flex items-center justify-center">
                 <h3 
-                  className="text-xl md:text-2xl font-bold text-white/70 tracking-widest uppercase whitespace-nowrap group-hover:text-white group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] transition-all duration-300"
+                  className="text-xl md:text-2xl font-bold text-white/70 tracking-widest uppercase whitespace-nowrap group-hover:text-white transition-all duration-300"
                   style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
                 >
                   {card.shortTitle}
                 </h3>
              </div>
             
-            {/* Flecha animada al Hover */}
             <div className="p-3 rounded-full border border-white/20 group-hover:bg-white group-hover:text-black group-hover:-translate-y-2 transition-all duration-300">
-              <ArrowRight className="w-5 h-5 md:rotate-0" />
+              <ArrowRight className="w-5 h-5" />
             </div>
           </motion.div>
         )}

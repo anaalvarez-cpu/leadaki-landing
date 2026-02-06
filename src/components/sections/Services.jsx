@@ -40,11 +40,7 @@ export function Services() {
           
           {/* === COLUMNA IZQUIERDA (Fija y Limpia) === */}
           <div className="lg:col-span-5 lg:sticky lg:top-32">
-             <div className="mb-4">
-                <span className="text-[#EE4587] font-bold tracking-[0.2em] uppercase text-xs">
-                  Nuestros Servicios
-                </span>
-             </div>
+
              
              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-[1.1]">
                Todo lo que hacemos tiene un solo objetivo: <br/>
