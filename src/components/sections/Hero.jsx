@@ -50,9 +50,9 @@ export function Hero() {
                         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                         className="text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.1] mb-6"
                     >
-                        Convertimos crecimiento <br className="hidden md:block"/>
+                       Marketing que mueve <br className="hidden md:block"/>
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
-                           en revenue.
+                           el revenue.
                         </span>
                     </motion.h1>
 
@@ -62,7 +62,7 @@ export function Hero() {
                         transition={{ delay: 0.4 }}
                         className="text-lg md:text-xl text-gray-400 max-w-lg leading-relaxed mb-10"
                     >
-                        Somos una agencia consultora de Growth Marketing que ordena adquisición, datos, experiencia y ventas para eliminar fugas del funnel y generar impacto real.
+                        Somos una agencia consultora de Growth Marketing que ordena adquisición, datos, experiencia y ventas para eliminar fugas del funnel y generar impacto real en revenue.
                     </motion.p>
 
                     <motion.div 

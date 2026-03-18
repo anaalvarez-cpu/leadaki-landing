@@ -26,10 +26,7 @@ export function Problem() {
         {/* Encabezado Alineado a la Izquierda */}
         <div className="max-w-4xl mr-auto mb-16 text-left">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            El crecimiento no siempre falla por falta de inversión. <br />
-            <span className="text-[#EE4587]">
-              Falla por desorden.
-            </span>
+          Sin orden, no hay crecimiento.
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl border-l-4 border-pink-500/30 pl-6">
             Cuando cada equipo optimiza su parte, pero nadie gobierna el todo,
