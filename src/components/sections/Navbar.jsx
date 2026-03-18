@@ -14,7 +14,7 @@ const menuData = [
     title: "Por qué Leadaki",
     items: [
       { name: "Propósito y Visión", desc: "Nuestra misión de transformar agencias.", icon: Target, href: "/por-que-leadaki" },
-      { name: "Por qué Growth", desc: "La metodología detrás del crecimiento.", icon: Zap, href: "#" }
+      { name: "Por qué Growth", desc: "La metodología detrás del crecimiento.", icon: Zap, href: "/por-que-growth" }
     ],
     featured: {
       title: "Auditoría Gratuita",

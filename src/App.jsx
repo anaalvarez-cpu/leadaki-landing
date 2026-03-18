@@ -8,6 +8,7 @@ import { Footer } from './components/sections/Footer';
 // Páginas
 import { Home } from './pages/Home';
 import { WhyLeadaki } from './pages/WhyLeadaki';
+import { WhyGrowth } from './pages/WhyGrowth';
 
 // ... imports ...
 
@@ -23,6 +24,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/por-que-leadaki" element={<WhyLeadaki />} />
+            <Route path="/por-que-growth" element={<WhyGrowth />} />
           </Routes>
         </main>
 
