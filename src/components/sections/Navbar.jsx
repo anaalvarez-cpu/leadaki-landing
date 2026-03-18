@@ -12,8 +12,9 @@ import logoImg from '../../assets/logo-blanco-01.svg';
 const menuData = [
   {
     title: "Por qué Leadaki",
+    href: "/por-que-leadaki",
     items: [
-      { name: "Propósito y Visión", desc: "Nuestra misión de transformar agencias.", icon: Target, href: "/por-que-leadaki" },
+      { name: "Propósito y Visión", desc: "Nuestra visión sistémica.", icon: Target, href: "/proposito-y-vision" },
       { name: "Por qué Growth", desc: "La metodología detrás del crecimiento.", icon: Zap, href: "/por-que-growth" }
     ],
     featured: {
@@ -131,6 +132,7 @@ export function Navbar() {
             {menuData.map((category, index) => (
               <button 
                 key={index}
+                onClick={() => { if (category.href) { navigate(category.href); setActiveMenu(null); } }}
                 className={`px-5 py-2.5 flex items-center gap-2 text-base font-medium transition-all rounded-full
                   ${activeMenu === index ? 'bg-white/10 text-white' : 'text-gray-300 hover:text-white hover:bg-white/5'}`}
                 onMouseEnter={() => setActiveMenu(index)}
@@ -248,13 +250,25 @@ export function Navbar() {
             <div className="flex flex-col gap-6 max-w-md mx-auto">
               {menuData.map((category, index) => (
                 <div key={index} className="border-b border-white/5 pb-4">
-                  <button 
-                    onClick={() => setActiveMobileSubmenu(activeMobileSubmenu === index ? null : index)}
-                    className="flex items-center justify-between w-full text-left text-xl font-bold text-white py-2"
-                  >
-                    {category.title}
-                    <ChevronDown size={24} className={`transition-transform ${activeMobileSubmenu === index ? 'rotate-180 text-blue-400' : 'text-gray-500'}`} />
-                  </button>
+                  <div className="flex items-center justify-between w-full py-2">
+                    {category.href ? (
+                      <Link 
+                        to={category.href} 
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="text-left text-xl font-bold text-white flex-1 hover:text-blue-400"
+                      >
+                        {category.title}
+                      </Link>
+                    ) : (
+                      <span className="text-left text-xl font-bold text-white flex-1">{category.title}</span>
+                    )}
+                    <button 
+                      onClick={() => setActiveMobileSubmenu(activeMobileSubmenu === index ? null : index)}
+                      className="p-2 -mr-2"
+                    >
+                      <ChevronDown size={24} className={`transition-transform ${activeMobileSubmenu === index ? 'rotate-180 text-blue-400' : 'text-gray-500'}`} />
+                    </button>
+                  </div>
                   <AnimatePresence>
                     {activeMobileSubmenu === index && (
                       <motion.div
