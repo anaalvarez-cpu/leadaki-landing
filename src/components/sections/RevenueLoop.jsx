@@ -23,7 +23,7 @@ const steps = [
   {
     icon: Zap,
     title: "3. Ejecutamos",
-    desc: "Activamosddfgf de forma sincronizada los accionables priorizados y te acompañamos a implementar os puntos de mejora a nivel interno.",
+    desc: "Activamos de forma sincronizada los accionables priorizados y te acompañamos a implementar os puntos de mejora a nivel interno.",
     subtext: "Paid Media, Creatividad, UX/UI, Data y Gestión de Ventas trabajando integrados, no en silos.",
     color: "text-[#EE4587]", 
     bg: "bg-[#EE4587]/10",
@@ -56,9 +56,8 @@ export function RevenueLoop() {
             <span className="text-[#EE4587] block mt-2">by Leadaki</span>
           </motion.h2>
           <p className="text-xl md:text-2xl text-gray-400 max-w-3xl leading-relaxed">
-Diseñamos y operamos un sistema de crecimiento que conecta paid media, creatividad, data y ventas en 
-ciclos cortos de aprendizaje. Medimos impacto real en revenue, reasignamos 
-inversión de acuerdo a su rendimiento, y optimizamos el negocio mientras sigue creciendo.
+            Diseñamos y operamos un sistema de crecimiento que conecta paid media, creatividad, data y ventas en ciclos cortos de aprendizaje. Medimos impacto real en revenue, reasignamos inversión de acuerdo a su rendimiento, y optimizamos el negocio mientras sigue creciendo.
+
           </p>
         </div>
 
