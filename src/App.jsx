@@ -14,6 +14,10 @@ import { ComoTrabajamos } from './pages/ComoTrabajamos';
 import { RevenueGrowthSystem } from './pages/RevenueGrowthSystem';
 import { DiagnosticoDigital } from './pages/DiagnosticoDigital';
 import { ModeloPartnership } from './pages/ModeloPartnership';
+import { Soluciones } from './pages/Soluciones';
+import { PaidMedia } from './pages/PaidMedia';
+import { DataAnalytics } from './pages/DataAnalytics';
+import { UxUi } from './pages/UxUi';
 
 // ... imports ...
 
@@ -35,6 +39,10 @@ function App() {
             <Route path="/revenue-growth-system" element={<RevenueGrowthSystem />} />
             <Route path="/diagnostico-digital" element={<DiagnosticoDigital />} />
             <Route path="/modelo-partnership" element={<ModeloPartnership />} />
+            <Route path="/soluciones" element={<Soluciones />} />
+            <Route path="/paid-media" element={<PaidMedia />} />
+            <Route path="/data-analytics" element={<DataAnalytics />} />
+            <Route path="/ux-ui" element={<UxUi />} />
           </Routes>
         </main>
 

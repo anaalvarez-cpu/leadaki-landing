@@ -13,7 +13,7 @@ export function Footer() {
           <div>
             <AnimatedSection>
               <h2 className="text-5xl font-bold mb-6 ">
-                Si querés vender más, no alcanza con hacer más marketing.
+                Si querés vender más, <br></br> no alcanza con hacer más marketing.
               </h2>
               <p className="text-gray-400 text-lg mb-8 max-w-md">
               Hay que optimizar el sistema completo. Eso es lo que hacemos en Leadaki.

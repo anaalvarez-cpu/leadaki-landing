@@ -39,11 +39,12 @@ const menuData = [
   },
   {
     title: "Soluciones",
+    href: "/soluciones",
     items: [
-      { name: "Paid Media", desc: "Meta & Google Ads de alto rendimiento.", icon: Megaphone, href: "#" },
+      { name: "Paid Media", desc: "Meta & Google Ads de alto rendimiento.", icon: Megaphone, href: "/paid-media" },
       { name: "Creatividad", desc: "Diseño que convierte clics en clientes.", icon: Layout, href: "#" },
-      { name: "Data Analytics", desc: "Dashboards y atribución precisa.", icon: LineChart, href: "#" },
-      { name: "UX/UI & CRO", desc: "Optimización de tasa de conversión.", icon: Globe, href: "#" }
+      { name: "Data Analytics", desc: "Dashboards y atribución precisa.", icon: LineChart, href: "/data-analytics" },
+      { name: "UX/UI & CRO", desc: "Optimización de tasa de conversión.", icon: Globe, href: "/ux-ui" }
     ],
     featured: {
       title: "Casos Recientes",
