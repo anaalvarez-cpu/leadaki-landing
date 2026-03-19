@@ -10,6 +10,10 @@ import { Home } from './pages/Home';
 import { Proposito } from './pages/Proposito';
 import { WhyLeadaki } from './pages/WhyLeadaki';
 import { WhyGrowth } from './pages/WhyGrowth';
+import { ComoTrabajamos } from './pages/ComoTrabajamos';
+import { RevenueGrowthSystem } from './pages/RevenueGrowthSystem';
+import { DiagnosticoDigital } from './pages/DiagnosticoDigital';
+import { ModeloPartnership } from './pages/ModeloPartnership';
 
 // ... imports ...
 
@@ -27,6 +31,10 @@ function App() {
             <Route path="/proposito-y-vision" element={<Proposito />} />
             <Route path="/por-que-leadaki" element={<WhyLeadaki />} />
             <Route path="/por-que-growth" element={<WhyGrowth />} />
+            <Route path="/como-trabajamos" element={<ComoTrabajamos />} />
+            <Route path="/revenue-growth-system" element={<RevenueGrowthSystem />} />
+            <Route path="/diagnostico-digital" element={<DiagnosticoDigital />} />
+            <Route path="/modelo-partnership" element={<ModeloPartnership />} />
           </Routes>
         </main>
 

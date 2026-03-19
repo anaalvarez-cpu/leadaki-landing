@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { 
   Menu, X, ChevronDown, 
   Target, Zap, BarChart3, Users, Layout, 
-  Megaphone, LineChart, Globe, Award, ArrowRight 
+  Megaphone, LineChart, Globe, Award, ArrowRight, Network 
 } from 'lucide-react';
 import logoImg from '../../assets/logo-blanco-01.svg'; 
 
@@ -25,10 +25,11 @@ const menuData = [
   },
   {
     title: "Cómo trabajamos",
+    href: "/como-trabajamos",
     items: [
-      { name: "Método Revenue Loop", desc: "Sistema cíclico de generación de ingresos.", icon: BarChart3, href: "#" },
-      { name: "Diagnóstico Digital", desc: "Evaluación profunda de tus activos.", icon: LineChart, href: "#" },
-      { name: "Modelo de Partnership", desc: "Crecemos contigo, no solo para ti.", icon: Users, href: "#" }
+      { name: "Revenue Growth System", desc: "El método paso a paso para crecer.", icon: BarChart3, href: "/revenue-growth-system" },
+      { name: "Diagnóstico Digital", desc: "Evaluación profunda de tus activos.", icon: LineChart, href: "/diagnostico-digital" },
+      { name: "Modelo de Partnership", desc: "Crecemos contigo, como socios estratégicos.", icon: Users, href: "/modelo-partnership" }
     ],
     featured: {
       title: "El Método",
@@ -135,13 +136,15 @@ export function Navbar() {
                 onClick={() => { if (category.href) { navigate(category.href); setActiveMenu(null); } }}
                 className={`px-5 py-2.5 flex items-center gap-2 text-base font-medium transition-all rounded-full
                   ${activeMenu === index ? 'bg-white/10 text-white' : 'text-gray-300 hover:text-white hover:bg-white/5'}`}
-                onMouseEnter={() => setActiveMenu(index)}
+                onMouseEnter={() => { if (category.items) setActiveMenu(index); else setActiveMenu(null); }}
               >
                 {category.title}
-                <ChevronDown 
-                  size={16} 
-                  className={`transition-transform duration-300 ${activeMenu === index ? "rotate-180 text-blue-400" : "text-gray-500"}`} 
-                />
+                {category.items && (
+                  <ChevronDown 
+                    size={16} 
+                    className={`transition-transform duration-300 ${activeMenu === index ? "rotate-180 text-blue-400" : "text-gray-500"}`} 
+                  />
+                )}
               </button>
             ))}
           </div>
@@ -262,15 +265,17 @@ export function Navbar() {
                     ) : (
                       <span className="text-left text-xl font-bold text-white flex-1">{category.title}</span>
                     )}
-                    <button 
-                      onClick={() => setActiveMobileSubmenu(activeMobileSubmenu === index ? null : index)}
-                      className="p-2 -mr-2"
-                    >
-                      <ChevronDown size={24} className={`transition-transform ${activeMobileSubmenu === index ? 'rotate-180 text-blue-400' : 'text-gray-500'}`} />
-                    </button>
+                    {category.items && (
+                      <button 
+                        onClick={() => setActiveMobileSubmenu(activeMobileSubmenu === index ? null : index)}
+                        className="p-2 -mr-2"
+                      >
+                        <ChevronDown size={24} className={`transition-transform ${activeMobileSubmenu === index ? 'rotate-180 text-blue-400' : 'text-gray-500'}`} />
+                      </button>
+                    )}
                   </div>
                   <AnimatePresence>
-                    {activeMobileSubmenu === index && (
+                    {category.items && activeMobileSubmenu === index && (
                       <motion.div
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
